@@ -10,9 +10,11 @@
 	<script src="/js/jquery-3.2.1.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<style type="text/css">
-	body{
-	   background: url(images/a.jpg)repeat;
-	}
+	body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+    }
 	#login-box {
 		/*border:1px solid #F00;*/
 		padding: 35px;
@@ -22,6 +24,31 @@
 	}
 
 	</style>
+	<script>
+        $(document).ready(function() {
+            var images = {
+                'morning': 'images/a.jpg',
+                'afternoon': 'images/b.jpg',
+                'evening': 'images/c.jpg'
+            };
+            var currentTime = new Date();
+            var hour = currentTime.getHours();
+            var backgroundImage;
+
+            if (hour < 8) {
+                // Morning time
+                backgroundImage = images.morning;
+            } else if (hour < 18) {
+                // Afternoon time
+                backgroundImage = images.afternoon;
+            } else {
+                // Evening time
+                backgroundImage = images.evening;
+            }
+
+            $('body').css('background-image', 'url(' + backgroundImage + ')');
+        });
+    </script>
 </head>
 <body>
 	<div class="container" id="top">
